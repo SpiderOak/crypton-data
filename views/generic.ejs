@@ -1,0 +1,20 @@
+<% if (!rows || !rows.length) { %>
+  There doesn't appear to be anything here
+<% } else { %>
+<table>
+  <thead>
+    <% Object.keys(rows[0]).forEach(function (column) { %>
+      <td><%= column %></td>
+    <% }); %>
+  </thead>
+  <% rows.forEach(function (row) { %>
+    <tr>
+    <% for (var i in row) { %>
+    <td>
+      <%= row[i] %>
+    </td>
+    <% } %>
+  </tr>
+  <% }); %>
+</table>
+<% } %>
