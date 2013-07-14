@@ -19,7 +19,7 @@ function connect (callback) {
   });
 };
 
-function render (query, res) {
+function render (query, title, res) {
   connect(function (client, done) {
     client.query(query, function (err, result) {
       done();
@@ -31,6 +31,7 @@ function render (query, res) {
       }
 
       res.render('generic', {
+        title: title,
         rows: result && result.rows
       });
     });
@@ -39,29 +40,28 @@ function render (query, res) {
 
 module.exports = function (app) {
   app.get('/', function (req, res) {
-    res.render('index', {
-      title: 'emerald'
-    });
+    // TODO implement res.redirect into emerald
+    render('select * from account', 'Accounts', res);
   });
 
   app.get('/accounts', function (req, res) {
-    render('select * from account', res);
+    render('select * from account', 'Accounts', res);
   });
 
   app.get('/keyrings', function (req, res) {
-    render('select * from base_keyring', res);
+    render('select * from base_keyring', 'Keyrings', res);
   });
 
   app.get('/containers', function (req, res) {
-    render('select * from container', res);
+    render('select * from container', 'Containers', res);
   });
 
   app.get('/records', function (req, res) {
-    render('select * from container_record', res);
+    render('select * from container_record', 'Records', res);
   });
 
   app.get('/messages', function (req, res) {
-    render('select * from message', res);
+    render('select * from message', 'Messages', res);
   });
 
 }
