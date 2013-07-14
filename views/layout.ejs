@@ -1,15 +1,39 @@
 <!doctype html>
 <html>
 <head>
-  <title>Crypton data explorer</title>
+  <title>Crypton Data Explorer</title>
   <style>
     h1 {
       font-size: 22px;
     }
 
+    table {
+      font-family: monospace;
+      border-collapse: collapse;
+    }
+
+    table, td {
+      border: 1px solid #ddd;
+    }
+
+    td {
+      padding: 5px;
+    }
+
     thead td {
       font-weight: bold;
     }
+
+    tr:hover {
+      background: #f5f5f5;
+    }
+
+    pre { padding: 5px; margin: 5px; }
+    .string { color: green; }
+    .number { color: darkorange; }
+    .boolean { color: blue; }
+    .null { color: magenta; }
+    .key { color: red; }
   </style>
 </head>
 <body>
@@ -21,7 +45,6 @@
     <li><a href="/records">Records</a></li>
     <li><a href="/messages">Messages</a></li>
   </ul>
-  <hr />
   <%- body %>
 </body>
 </html>
