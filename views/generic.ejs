@@ -12,7 +12,7 @@
     <tr>
     <% for (var i in row) { %>
     <td>
-      <% var out;
+      <% var out = null;
       try {
         out = JSON.parse(row[i]);
         out = JSON.stringify(out, null, 2);
